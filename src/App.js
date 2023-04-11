@@ -20,7 +20,7 @@ const App = () => {
         <Menu />
       </div>
 
-      <Footer />
+
 
       <BrowserRouter>
       <Routes>
@@ -31,6 +31,7 @@ const App = () => {
       </Routes>
 
       </BrowserRouter>
+      {/* <Footer /> */}
     </div>
   );
 };

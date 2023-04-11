@@ -1,6 +1,7 @@
 import SunriseJPG from "../images/sunrise2.jpg";
 import { NavLink } from "@fremtind/jkl-core";
 import { motion } from "framer-motion";
+import { Footer } from "./Footer";
 
 export const Om = () => {
   return (
@@ -37,6 +38,7 @@ export const Om = () => {
           </div>
         </div>
       </div>
+      
     </motion.main>
   );
 };
