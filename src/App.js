@@ -1,25 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
+import { Route, BrowserRouter, Routes } from "react-router-dom";
+import "./App.css";
+import { Hjem } from "./components/Hjem";
+import { Header } from "./components/Header";
+import { Menu } from "./components/Menu";
+import { Kontakt } from "./components/Kontakt";
+import { Om } from "./components/Om";
+import { Områder } from "./components/Områder";
+import { Footer } from "./components/Footer";
 
-function App() {
+import { data } from "./data/data.js";
+
+const App = () => {
+  const objects = data.property;
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="jkl">
+      <div className="header-wrapper">
+        <Header />
+        <Menu />
+      </div>
+
+      <Footer />
+
+      <BrowserRouter>
+      <Routes>
+      <Route path="/" element={<Hjem />} />
+        <Route path="/om" element={<Om />} />
+        <Route path="/objekter" element={<Områder objects={objects} />} />
+        <Route path="/kontakt" element={<Kontakt />} />
+      </Routes>
+
+      </BrowserRouter>
     </div>
   );
-}
+};
 
 export default App;
