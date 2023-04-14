@@ -1,15 +1,10 @@
 import MapPNG from "../images/map2.png";
 import { NavLink } from "react-router-dom";
-import { motion } from "framer-motion";
 
 const Map = () => {
   return (
     <div className="map">
-      {/* <motion.div
-        className="pins"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.3 }}
+      <div
       >
         <div className="pin"></div>
         <NavLink className="pin-name" to="/carboneras">
@@ -31,20 +26,20 @@ const Map = () => {
           Vera
         </NavLink>
 
-        <div className="pin cabrera"></div>
+        {/* <div className="pin cabrera"></div>
         <NavLink className="pin-name cabreraname" to="/cabrera">
           Cabrera
-        </NavLink>
+        </NavLink> */}
 
-        <div className="pin losgallardos"></div>
+        {/* <div className="pin losgallardos"></div>
         <NavLink className="pin-name losgallardosname" to="/losgallardos">
           Los Gallardos
-        </NavLink>
+        </NavLink> */}
 
-        <div className="pin antas"></div>
+        {/* <div className="pin antas"></div>
         <NavLink className="pin-name aljarizname" to="/aljariz">
           Aljariz
-        </NavLink>
+        </NavLink> */}
 
         <div className="pin calapanizo"></div>
         <NavLink className="pin-name calapanizoname" to="/calapanizo">
@@ -65,7 +60,7 @@ const Map = () => {
         <NavLink className="pin-name sanjuanname" to="/sanjuan">
           San Juan de los Terreros
         </NavLink>
-      </motion.div> */}
+      </div>
       <img src={MapPNG} alt="map" className="map-img" />
     </div>
   );

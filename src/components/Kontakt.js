@@ -3,11 +3,7 @@ import VillageJPG from "../images/sunrise2.jpg";
 
 export const Kontakt = ({}) => {
   return (
-    <motion.main
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ delay: 0.3 }}
-    >
+    <main>
       <div className="content">
         <div className="img-container">
           <img className="img" alt="" src={VillageJPG} />
@@ -18,9 +14,9 @@ export const Kontakt = ({}) => {
             Har du spørsmål eller er du rett og slett bare litt nysgjerrig? Ikke
             nøl med å ta kontakt – helt uforpliktende så klart.
           </p>
-          <p>E-post: post@sunrisehomes.no</p>
+          <p>E-post: <a className="reg-link" href="mailto:post@sunrisehomes.no">post@sunrisehomes.no</a></p>
         </div>
       </div>
-    </motion.main>
+    </main>
   );
 };

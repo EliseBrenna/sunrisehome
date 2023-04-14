@@ -6,7 +6,6 @@ import { Menu } from "./components/Menu";
 import { Kontakt } from "./components/Kontakt";
 import { Om } from "./components/Om";
 import { Områder } from "./components/Områder";
-import { Footer } from "./components/Footer";
 
 import { data } from "./data/data.js";
 
