@@ -1,5 +1,4 @@
 import MapPNG from "../images/map2.png";
-import { NavLink } from "react-router-dom";
 
 const Map = () => {
   return (
@@ -7,24 +6,24 @@ const Map = () => {
       <div
       >
         <div className="pin"></div>
-        <NavLink className="pin-name" to="/carboneras">
+        <div className="pin-name">
           Carboneras
-        </NavLink>
+        </div>
 
         <div className="pin mojacar"></div>
-        <NavLink className="pin-name mojacarname" to="/mojacar">
+        <div className="pin-name mojacarname">
           Mojácar Playa
-        </NavLink>
+        </div>
 
         <div className="pin garrucha"></div>
-        <NavLink className="pin-name garruchaname" to="/garrucha">
+        <div className="pin-name garruchaname">
           Garrucha Playa
-        </NavLink>
+        </div>
 
         <div className="pin vera"></div>
-        <NavLink className="pin-name veraname" to="/vera">
+        <div className="pin-name veraname">
           Vera
-        </NavLink>
+        </div>
 
         {/* <div className="pin cabrera"></div>
         <NavLink className="pin-name cabreraname" to="/cabrera">
@@ -42,24 +41,24 @@ const Map = () => {
         </NavLink> */}
 
         <div className="pin calapanizo"></div>
-        <NavLink className="pin-name calapanizoname" to="/calapanizo">
+        <div className="pin-name calapanizoname">
           Cala Panizo
-        </NavLink>
+        </div>
 
         <div className="pin aguilas"></div>
-        <NavLink className="pin-name aguilasname" to="/aguilas">
+        <div className="pin-name aguilasname">
           Águilas
-        </NavLink>
+        </div>
 
         <div className="pin pulpi"></div>
-        <NavLink className="pin-name pulpiname" to="/pulpi">
+        <div className="pin-name pulpiname">
           Pulpí
-        </NavLink>
+        </div>
 
         <div className="pin sanjuan"></div>
-        <NavLink className="pin-name sanjuanname" to="/sanjuan">
+        <div className="pin-name sanjuanname">
           San Juan de los Terreros
-        </NavLink>
+        </div>
       </div>
       <img src={MapPNG} alt="map" className="map-img" />
     </div>
