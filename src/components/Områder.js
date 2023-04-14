@@ -55,7 +55,7 @@ export const Områder = ({ objects }) => {
             Beatles» fant også veien til områdene på 60-tallet og i Almería er
             det reist en stor statue av Beatles-legenden der han blant annet
             komponerte mesterverket «Strawberry Fields Forever». Selv fant vi i
-            Sunrise Homes veien til Mojácar for 20 år sien der vi ennå opplever
+            Sunrise Homes veien til Mojácar for 20 år siden der vi ennå opplever
             nye magiske øyeblikk som balsam for kropp og sjel.
           </div>
         ) : null}

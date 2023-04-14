@@ -13,12 +13,12 @@ const Map = () => {
 
         <div className="pin mojacar"></div>
         <NavLink className="pin-name mojacarname" to="/mojacar">
-          Mojácar
+          Mojácar Playa
         </NavLink>
 
         <div className="pin garrucha"></div>
         <NavLink className="pin-name garruchaname" to="/garrucha">
-          Garrucha
+          Garrucha Playa
         </NavLink>
 
         <div className="pin vera"></div>
