@@ -1,6 +1,9 @@
 import { NavCard } from "@fremtind/jkl-card-react";
 import { useState } from "react";
 import Modal from "./Modal";
+import BedIcon from '@mui/icons-material/Bed';
+import PoolIcon from "@mui/icons-material/Pool";
+import ShowerIcon from '@mui/icons-material/Shower';
 
 import "@fremtind/jkl-card/card.min.css";
 
@@ -45,18 +48,21 @@ export const Områder = ({ objects }) => {
             ligger oppe på et lite fjell og husene klamrer seg fast som hvite
             svalereir. Utsikten ned mot havet er meget vakker og stemningen er
             magisk. Byen har en lang historisk betydning og vi anbefaler å lese
-            denne på <a className="reg-link" href="https://www.mojacar.es">mojacar.es</a>. Det oser
-            av historisk hygge og opprinnelighet og gamlebyen har vært bebodd
-            siden bronsjealderen 2000 år, f. Kristus. Etter andre verdenskrig og
-            frem til og med 60-tallet tilbød myndighetene folk gratis hus til
-            dem som hadde lyst til å slå seg ned og renovere husene. Det
-            strømmet kunstnere og musikere til stedet og byen fikk raskt et
-            kunstnerpreg, et preg stedet fremdeles har i dag. John Lennon i «The
-            Beatles» fant også veien til områdene på 60-tallet og i Almería er
-            det reist en stor statue av Beatles-legenden der han blant annet
-            komponerte mesterverket «Strawberry Fields Forever». Selv fant vi i
-            Sunrise Homes veien til Mojácar for 20 år siden der vi ennå opplever
-            nye magiske øyeblikk som balsam for kropp og sjel.
+            denne på{" "}
+            <a className="reg-link" href="https://www.mojacar.es">
+              mojacar.es
+            </a>
+            . Det oser av historisk hygge og opprinnelighet og gamlebyen har
+            vært bebodd siden bronsjealderen 2000 år, f. Kristus. Etter andre
+            verdenskrig og frem til og med 60-tallet tilbød myndighetene folk
+            gratis hus til dem som hadde lyst til å slå seg ned og renovere
+            husene. Det strømmet kunstnere og musikere til stedet og byen fikk
+            raskt et kunstnerpreg, et preg stedet fremdeles har i dag. John
+            Lennon i «The Beatles» fant også veien til områdene på 60-tallet og
+            i Almería er det reist en stor statue av Beatles-legenden der han
+            blant annet komponerte mesterverket «Strawberry Fields Forever».
+            Selv fant vi i Sunrise Homes veien til Mojácar for 20 år siden der
+            vi ennå opplever nye magiske øyeblikk som balsam for kropp og sjel.
           </div>
         ) : null}
         <div className="area-content">
@@ -90,12 +96,18 @@ export const Områder = ({ objects }) => {
                   >
                     <div className="sections">
                       <div className="modal-section">
-                        Baderom: {property.baths}
+                        <ShowerIcon /> <p>{property.baths}</p>
                       </div>
 
                       <div className="modal-section">
-                        Soverom: {property.beds}
+                        <BedIcon /> <p>{property.beds}</p>
                       </div>
+
+                      {property.pool ? (
+                        <div className="modal-section">
+                          <PoolIcon /> <p>{property.pool}</p>
+                        </div>
+                      ) : null}
                     </div>
 
                     <div className="nav-card-img-container">

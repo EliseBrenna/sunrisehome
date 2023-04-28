@@ -1,6 +1,10 @@
 import Carousel, { CarouselItem } from "./Carousel";
 import { CloseIcon } from "@fremtind/jkl-icons-react";
 import { useState } from "react";
+import BedIcon from '@mui/icons-material/Bed';
+import PoolIcon from "@mui/icons-material/Pool";
+import ShowerIcon from '@mui/icons-material/Shower';
+import EuroIcon from '@mui/icons-material/EuroSymbol';
 
 const Modal = ({
   showModal,
@@ -24,18 +28,17 @@ const Modal = ({
       <div className="modal-content" onClick={(e) => e.stopPropagation()}>
         <div className="modal-header">
           <h4 className="modal-title">
-            {title} i {town} <p className="id">#{id}</p>
+            {title} i {town} €{price}<p className="id">#{id}</p> 
           </h4>
           <CloseIcon onClick={onClose} className="icon" />
         </div>
         <div className="modal-body">
           <div className="sections">
-            <div className="modal-section"> Pris: €{price}</div>
-            <div className="modal-section"> Baderom: {baths}</div>
-            <div className="modal-section"> Soverom: {beds}</div>
+            <div className="modal-section"> <p><ShowerIcon/>Baderom: {baths}</p></div>
+            <div className="modal-section"> <p><BedIcon/>Soverom: {beds}</p></div>
             <div className="modal-section">
               {" "}
-              Svømmebasseng: {pools === 0 ? "0" : pools}
+              <p><PoolIcon/> Svømmebasseng: {pools === 0 ? "0" : pools}</p>
             </div>
           </div>
 
