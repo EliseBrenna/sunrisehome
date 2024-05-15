@@ -11,6 +11,7 @@ import { data } from "./data/data.js";
 
 const App = () => {
   const objects = data.property;
+  console.log(data)
 
   return (
     <div className="jkl">
