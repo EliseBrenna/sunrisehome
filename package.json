@@ -3,14 +3,15 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@emotion/react": "^11.10.8",
-    "@emotion/styled": "^11.10.8",
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.0",
     "@fremtind/jkl-card-react": "^9.0.5",
     "@fremtind/jkl-core": "^12.0.3",
     "@fremtind/jkl-hamburger-react": "^11.0.4",
     "@fremtind/jkl-icons-react": "^7.1.2",
     "@fremtind/jkl-tabs-react": "^4.0.4",
     "@mui/icons-material": "^5.11.16",
+    "@mui/joy": "^5.0.0-beta.52",
     "@mui/material": "^5.12.2",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
@@ -20,7 +21,9 @@
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.10.0",
     "react-scripts": "5.0.1",
+    "react-slick": "^0.30.3",
     "react-swipeable": "^7.0.0",
+    "slick-carousel": "^1.8.1",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

@@ -1,142 +1,177 @@
-import { NavCard } from "@fremtind/jkl-card-react";
-import { useState } from "react";
-import Modal from "./Modal";
-import BedIcon from '@mui/icons-material/Bed';
-import PoolIcon from "@mui/icons-material/Pool";
-import ShowerIcon from '@mui/icons-material/Shower';
+import { useSearchParams } from "react-router-dom";
+import { useContext, useMemo, useState } from "react";
+import { PropertyContext } from "./PropertyContext";
+import OverflowCard from "./Card";
+import Select from "@mui/joy/Select";
+import Option from "@mui/joy/Option";
+import { Box, Chip } from "@mui/joy";
+import { typeLabels } from "./labels.js";
 
-import "@fremtind/jkl-card/card.min.css";
+export const Områder = () => {
+  const { properties } = useContext(PropertyContext);
+  const [searchParams] = useSearchParams();
+  const [selectedTown, setSelectedTown] = useState(searchParams.get("town"));
+  const [selectedType, setSelectedType] = useState(searchParams.get("type"));
+  const [selectedBeds, setSelectedBeds] = useState(searchParams.get("beds"));
+  const [selectedBaths, setSelectedBaths] = useState(searchParams.get("baths"));
 
-export const Områder = ({ objects }) => {
-  const [value, setValue] = useState("Mojacar");
-  const [showModal, setShowModal] = useState(undefined);
+  const uniqueTowns = useMemo(() => {
+    return [...new Set(properties.map((p) => p.town).filter(Boolean))];
+  }, [properties]);
 
-  const propertyTown = objects.map((property) => {
-    return property.town;
-  });
+  const uniqueTypes = useMemo(() => {
+    return [...new Set(properties.map((p) => p.type).filter(Boolean))];
+  }, [properties]);
 
-  const noDuplicates = [...new Set(propertyTown)];
+  const uniqueBeds = useMemo(() => {
+    return [...new Set(properties.map((p) => p.beds).filter(Boolean))];
+  }, [properties]);
+
+  const uniqueBaths = useMemo(() => {
+    return [...new Set(properties.map((p) => p.baths).filter(Boolean))];
+  }, [properties]);
+
+  const filteredProperties = useMemo(() => {
+    return properties.filter((p) => {
+      const matchesTown = selectedTown ? p.town === selectedTown : true;
+      const matchesType = selectedType ? p.type === selectedType : true;
+      const matchesBeds = selectedBeds ? p.beds === selectedBeds : true;
+      const matchesBaths = selectedBaths ? p.baths === selectedBaths : true;
+      return matchesTown && matchesType && matchesBeds && matchesBaths;
+    });
+  }, [properties, selectedTown, selectedType, selectedBeds, selectedBaths]);
+
+  console.log(properties);
 
   return (
-    <div className="content">
-      <div className="select-wrapper">
-        <label className="select-label">Velg et boligområde</label>
-        <select
-          className="select"
-          onChange={(e) => {
-            setValue(e.target.value);
-          }}
-        >
-          {noDuplicates.map((town, id) => {
-            return (
-              <>
-                <option value={town} disabled selected hidden>
-                  {value}
-                </option>
-                <option key={id} value={town}>
-                  {town}
-                </option>
-              </>
-            );
-          })}
-        </select>
-        {value === "Mojacar" ? (
-          <div className="area-description">
-            Mojácar ligger ved Middelhavet på Spanias østkyst, litt nord for
-            Almería og i underkant av 300km fra Malaga og 225km fra Alicante.
-            Mojácar er på listen over de vakreste landsbyene i Spania. Gamlebyen
-            ligger oppe på et lite fjell og husene klamrer seg fast som hvite
-            svalereir. Utsikten ned mot havet er meget vakker og stemningen er
-            magisk. Byen har en lang historisk betydning og vi anbefaler å lese
-            denne på{" "}
-            <a className="reg-link" href="https://www.mojacar.es">
-              mojacar.es
-            </a>
-            . Det oser av historisk hygge og opprinnelighet og gamlebyen har
-            vært bebodd siden bronsjealderen 2000 år, f. Kristus. Etter andre
-            verdenskrig og frem til og med 60-tallet tilbød myndighetene folk
-            gratis hus til dem som hadde lyst til å slå seg ned og renovere
-            husene. Det strømmet kunstnere og musikere til stedet og byen fikk
-            raskt et kunstnerpreg, et preg stedet fremdeles har i dag. John
-            Lennon i «The Beatles» fant også veien til områdene på 60-tallet og
-            i Almería er det reist en stor statue av Beatles-legenden der han
-            blant annet komponerte mesterverket «Strawberry Fields Forever».
-            Selv fant vi i Sunrise Homes veien til Mojácar for 20 år siden der
-            vi ennå opplever nye magiske øyeblikk som balsam for kropp og sjel.
-          </div>
-        ) : null}
-        <div className="area-content">
-          {objects.map((property, id) => {
-            if (value === property.town) {
-              let type =
-                property.type === "Apartment"
-                  ? "Leilighet"
-                  : property.type === "Land"
-                  ? "Tomt"
-                  : property.type === "Town House"
-                  ? "Rekkehus"
-                  : property.type === "Commercial"
-                  ? "Leilighet"
-                  : property.type === "Country House"
-                  ? "Landssted"
-                  : property.type === "Village House"
-                  ? "Landsbyhus"
-                  : property.type === "Penthouse"
-                  ? "Toppleilighet"
-                  : property.type;
-              return (
-                <>
-                  <NavCard
-                    className="jkl-nav-card"
-                    padding="m"
-                    key={property.id}
-                    title={type}
-                    description={`€${property.price}`}
-                    onClick={() => setShowModal(id)}
-                  >
-                    <div className="sections">
-                      <div className="modal-section">
-                        <ShowerIcon /> <p>{property.baths}</p>
-                      </div>
+    <section className="objects-section">
+      <div className="select-container">
+        {/* Område (Towns) */}
+        <div className="select">
+          <label>Område</label>
+          <Select
+            value={selectedTown}
+            onChange={(event, newValue) => setSelectedTown(newValue)}
+            renderValue={(selected) => (
+              <Box sx={{ display: "flex", gap: "0.25rem" }}>
+                {selected && (
+                  <Chip variant="soft" style={{ color: "#030526" }}>
+                    {selected.value}
+                  </Chip>
+                )}
+              </Box>
+            )}
+            sx={{ minWidth: "15rem" }}
+            slotProps={{
+              listbox: {
+                sx: { width: "100%" },
+              },
+            }}
+          >
+            {uniqueTowns.map((town) => (
+              <Option key={town} value={town}>
+                {town}
+              </Option>
+            ))}
+          </Select>
+        </div>
 
-                      <div className="modal-section">
-                        <BedIcon /> <p>{property.beds}</p>
-                      </div>
+        <div className="select">
+          <label>Boligtype</label>
+          <Select
+            value={selectedType}
+            onChange={(event, newValue) => setSelectedType(newValue)}
+            renderValue={(selected) => (
+              <Box sx={{ display: "flex", gap: "0.25rem" }}>
+                {selected && (
+                  <Chip variant="soft" style={{ color: "#030526" }}>
+                    {typeLabels[selected.value] || selected}
+                  </Chip>
+                )}
+              </Box>
+            )}
+            sx={{ minWidth: "15rem" }}
+            slotProps={{
+              listbox: {
+                sx: { width: "100%" },
+              },
+            }}
+          >
+            {uniqueTypes.map((type) => (
+              <Option key={type} value={type}>
+                {typeLabels[type] || type}
+              </Option>
+            ))}
+          </Select>
+        </div>
 
-                      {property.pool ? (
-                        <div className="modal-section">
-                          <PoolIcon /> <p>{property.pool}</p>
-                        </div>
-                      ) : null}
-                    </div>
+        <div className="select">
+          <label>Soverom</label>
+          <Select
+            value={selectedBeds}
+            onChange={(event, newValue) => setSelectedBeds(newValue)}
+            renderValue={(selected) => (
+              <Box sx={{ display: "flex", gap: "0.25rem" }}>
+                {selected && (
+                  <Chip variant="soft" style={{ color: "#030526" }}>
+                    {selected.value}
+                  </Chip>
+                )}
+              </Box>
+            )}
+            sx={{ minWidth: "15rem" }}
+            slotProps={{
+              listbox: {
+                sx: { width: "100%" },
+              },
+            }}
+          >
+            {uniqueBeds.map((beds) => (
+              <Option key={beds} value={beds}>
+                {beds}
+              </Option>
+            ))}
+          </Select>
+        </div>
 
-                    <div className="nav-card-img-container">
-                      <img
-                        className="nav-card-img"
-                        src={property.images.image[0].url}
-                        alt=""
-                      />
-                    </div>
-                  </NavCard>
-                  <Modal
-                    id={property.id}
-                    title={type}
-                    town={property.town}
-                    baths={property.baths}
-                    price={property.price}
-                    beds={property.beds}
-                    pools={property.pool}
-                    desc={property.desc.en}
-                    images={property.images.image}
-                    onClose={() => setShowModal(false)}
-                    showModal={showModal === id}
-                  />
-                </>
-              );
-            }
-          })}
+        <div className="select">
+          <label>Bad</label>
+          <Select
+            value={selectedBaths}
+            onChange={(event, newValue) => setSelectedBaths(newValue)}
+            renderValue={(selected) => (
+              <Box sx={{ display: "flex", gap: "0.25rem" }}>
+                {selected && (
+                  <Chip variant="soft" style={{ color: "#030526" }}>
+                    {selected.value}
+                  </Chip>
+                )}
+              </Box>
+            )}
+            sx={{ minWidth: "15rem" }}
+            slotProps={{
+              listbox: {
+                sx: { width: "100%" },
+              },
+            }}
+          >
+            {uniqueBaths.map((baths) => (
+              <Option key={baths} value={baths}>
+                {baths}
+              </Option>
+            ))}
+          </Select>
         </div>
       </div>
-    </div>
+      <div className="objects-section-cards">
+        {filteredProperties.length === 0 ? (
+          <p>Ingen boliger funnet med de valgte kriteriene.</p>
+        ) : (
+          filteredProperties.map((property) => (
+            <OverflowCard property={property} key={property.id} />
+          ))
+        )}
+      </div>
+    </section>
   );
 };

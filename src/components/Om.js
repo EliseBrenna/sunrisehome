@@ -3,11 +3,11 @@ import { NavLink } from "@fremtind/jkl-core";
 
 export const Om = () => {
   return (
-    <main>
+
       <div className="content">
-        <div className="img-container">
+        {/* <div className="img-container">
           <img src={SunriseJPG} className="img" alt="" />
-        </div>
+        </div> */}
         <div className="content-container">
           <h2>Formidling av eiendom på solens kyst</h2>
           <p className="page-content">
@@ -29,6 +29,6 @@ export const Om = () => {
           </div>
         </div>
       </div>
-    </main>
+
   );
 };
