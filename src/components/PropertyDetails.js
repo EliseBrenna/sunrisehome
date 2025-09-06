@@ -73,7 +73,7 @@ export const PropertyDetails = () => {
             onClick={() => setOpen(true)}
             style={{
               padding: "0.5rem",
-              maxHeight: "36px",
+
               backgroundColor: "#F2F2F2",
               color: "black",
               border: "2px solid #f2c53d",
