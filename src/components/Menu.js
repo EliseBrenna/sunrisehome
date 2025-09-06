@@ -1,6 +1,16 @@
 import { Tabs, TabList, Tab } from "@fremtind/jkl-tabs-react";
 import "@fremtind/jkl-tabs/tabs.min.css";
+import { useState } from "react";
 import { NavLink } from "react-router-dom";
+
+import Menu from "@mui/joy/Menu";
+import MenuButton from "@mui/joy/MenuButton";
+import MenuItem from "@mui/joy/MenuItem";
+import Dropdown from "@mui/joy/Dropdown";
+
+// Importer stilark via JavaScript med CSS-loader.
+import "@fremtind/jkl-menu/menu.min.css";
+import "@fremtind/jkl-icons/icons.min.css";
 
 const pages = [
   { title: "Hjem", path: "/" },
@@ -9,7 +19,9 @@ const pages = [
   // { title: "Kontakt oss", path: "/kontakt" },
 ];
 
-export const Menu = () => {
+export const NavMenu = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
     <>
       <Tabs defaultTab={0} className="jkl-tabs">
@@ -20,8 +32,18 @@ export const Menu = () => {
             </Tab>
           ))}
         </TabList>
-        {/* <div className="hamburger-wrapper">
-          <div>
+        <div className="hamburger-wrapper">
+          <Dropdown>
+            <MenuButton>Meny</MenuButton>
+            <Menu>
+              {pages.map((page) => (
+                <MenuItem>
+                  <NavLink to={page.path}>{page.title}</NavLink>
+                </MenuItem>
+              ))}
+            </Menu>
+          </Dropdown>
+          {/* <div>
             <Hamburger
               aria-controls="jkl-example-menu-placeholder"
               id="jkl-example-hamburger"
@@ -29,20 +51,8 @@ export const Menu = () => {
               onClick={() => setIsOpen(!isOpen)}
               actionLabel={undefined}
             />
-          </div>
-          {pages.map((page) => (
-            <NavLink
-              className="hamburger-menu-items"
-              id="jkl-example-menu-placeholder"
-              aria-labelledby="jkl-example-hamburger"
-              role="group"
-              hidden={!isOpen}
-              href={page.path}
-            >
-              {page.title}
-            </NavLink>
-          ))}
-        </div> */}
+          </div> */}
+        </div>
       </Tabs>
     </>
   );

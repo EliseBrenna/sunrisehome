@@ -96,7 +96,13 @@ export const PropertyDetails = () => {
       >
         <Sheet
           variant="outlined"
-          sx={{ maxWidth: 800, borderRadius: "md", p: 3, boxShadow: "lg" }}
+          sx={{
+            width: { xs: "90vw", sm: "80vw", md: "800px" },
+            maxWidth: "100%",
+            borderRadius: "md",
+            p: 3,
+            boxShadow: "lg",
+          }}
         >
           <ModalClose variant="plain" sx={{ m: 1 }} />
           <Typography

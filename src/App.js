@@ -1,7 +1,7 @@
 import { Route, BrowserRouter, Routes } from "react-router-dom";
 import "./App.css";
 import { Hjem } from "./components/Hjem";
-import { Menu } from "./components/Menu";
+import { NavMenu } from "./components/Menu";
 import { Områder } from "./components/Områder";
 import { Om } from "./components/Om";
 import { PropertyDetails } from "./components/PropertyDetails";
@@ -25,7 +25,7 @@ const App = () => {
               <img src={SunriseLogo} alt="Sunrisehomes logo" className="logo" />
             </div>
             <nav>
-              <Menu />
+              <NavMenu />
             </nav>
           </header>
           {/* <div> Siden er under konstruksjon.</div> */}
