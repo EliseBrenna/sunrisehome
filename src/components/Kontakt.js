@@ -1,22 +1,24 @@
-import { motion } from "framer-motion";
-import VillageJPG from "../images/sunrise2.jpg";
+import SunriseJPG from "../images/sunrise2.jpg";
 
-export const Kontakt = ({}) => {
+export const Kontakt = () => {
   return (
-
-      <div className="content">
-        {/* <div className="img-container">
-          <img className="img" alt="" src={VillageJPG} />
-        </div> */}
-        <div className="content-container">
-          <h2>Vi vil gjerne høre fra deg</h2>
-          <p className="page-content">
-            Har du spørsmål eller er du rett og slett bare litt nysgjerrig? Ikke
-            nøl med å ta kontakt – helt uforpliktende så klart.
-          </p>
-          <p>E-post: <a className="reg-link" href="mailto:post@sunrisehomes.no">post@sunrisehomes.no</a></p>
-        </div>
+    <div className="content">
+      <div className="img-container">
+        <img className="img" alt="" src={SunriseJPG} />
       </div>
-
+      <div className="content-container">
+        <h2>Vi vil gjerne høre fra deg</h2>
+        <p className="page-content">
+          Har du spørsmål eller er du rett og slett bare litt nysgjerrig? Ikke
+          nøl med å ta kontakt – helt uforpliktende så klart.
+        </p>
+        <p>
+          E-post:{" "}
+          <a className="reg-link" href="mailto:post@sunrisehomes.no">
+            post@sunrisehomes.no
+          </a>
+        </p>
+      </div>
+    </div>
   );
 };

@@ -104,7 +104,11 @@ export const PropertyDetails = () => {
             textColor="inherit"
             sx={{ fontWeight: "lg", mb: 1 }}
           >
-            This is the modal title
+            {property.beds} soverom, {property.baths} bad –{" "}
+            {typeLabels[property.type] || property.type} <br />
+            <p>
+              {property.town}, {property.province}
+            </p>{" "}
           </Typography>
           <Slider {...sliderSettings}>
             {property.images.image.map((image, i) => (

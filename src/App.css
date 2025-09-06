@@ -9,8 +9,54 @@ body {
 main {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  /* height: 100vh; */
+  /* justify-content: center; */
+  height: 100%;
+}
+
+.link-buttons {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+
+  .link-button {
+    color: #030526;
+  }
+}
+
+.reg-link {
+  color: #030526;
+}
+
+.contact {
+  padding-top: 2rem;
+}
+
+.content {
+  display: flex;
+  margin: 2rem;
+  margin-left: 8rem;
+  margin-right: 8rem;
+  justify-content: space-evenly;
+  gap: 4rem;
+  height: 100%;
+
+  h2 {
+    color: #030526;
+  }
+
+  .img-container {
+    display: flex;
+
+    img {
+      border-radius: 0 !important;
+      max-width: 100% !important;
+      height: auto !important;
+    }
+  }
+
+  article {
+    margin: 0;
+  }
 }
 
 header {
@@ -20,6 +66,18 @@ header {
   margin: 2rem;
   margin-left: 8rem;
   margin-right: 8rem;
+  max-height: 10rem;
+
+  .jkl-tablist {
+    border-bottom: none !important;
+
+    .jkl-tab {
+      a {
+        color: #030526;
+        text-decoration: none;
+      }
+    }
+  }
 
   .logo-container {
     display: flex;
@@ -265,5 +323,7 @@ button {
 
 footer {
   width: 100%;
-  background: purple;
+  position: sticky;
+  background: #030526;
+  color: white;
 }

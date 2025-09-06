@@ -1,32 +1,23 @@
-import { Tabs, TabList } from "@fremtind/jkl-tabs-react";
-import { NavLink } from "@fremtind/jkl-core";
-import { useState } from "react";
-import { Hamburger } from "@fremtind/jkl-hamburger-react";
-
-import "@fremtind/jkl-hamburger/hamburger.min.css";
+import { Tabs, TabList, Tab } from "@fremtind/jkl-tabs-react";
 import "@fremtind/jkl-tabs/tabs.min.css";
+import { NavLink } from "react-router-dom";
 
 const pages = [
   { title: "Hjem", path: "/" },
   { title: "Om", path: "/om" },
   { title: "Boligobjekter", path: "/objekter" },
-  { title: "Kontakt oss", path: "/kontakt" },
+  // { title: "Kontakt oss", path: "/kontakt" },
 ];
 
 export const Menu = () => {
-  const [isOpen, setIsOpen] = useState(false);
   return (
     <>
       <Tabs defaultTab={0} className="jkl-tabs">
         <TabList aria-label="tabs" className="jkl-tablist">
           {pages.map((page) => (
-            <NavLink
-              key={page.path}
-              href={page.path}
-              className="jkl-tab menu-link"
-            >
-              {page.title}
-            </NavLink>
+            <Tab key={page.path} className="jkl-tab menu-link">
+              <NavLink to={page.path}>{page.title}</NavLink>
+            </Tab>
           ))}
         </TabList>
         {/* <div className="hamburger-wrapper">

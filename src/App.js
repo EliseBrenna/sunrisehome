@@ -2,14 +2,11 @@ import { Route, BrowserRouter, Routes } from "react-router-dom";
 import "./App.css";
 import { Hjem } from "./components/Hjem";
 import { Menu } from "./components/Menu";
-import { Kontakt } from "./components/Kontakt";
 import { Områder } from "./components/Områder";
 import { Om } from "./components/Om";
 import { PropertyDetails } from "./components/PropertyDetails";
 import SunriseLogo from "./images/logo.png";
-import { NavLink } from "@fremtind/jkl-core";
 import { PropertyProvider } from "./components/PropertyContext";
-import { useNavigate } from "react-router-dom";
 
 const App = () => {
   const pages = [
@@ -22,24 +19,24 @@ const App = () => {
   return (
     <BrowserRouter>
       <main>
-        {/* <PropertyProvider> */}
-        <header>
-          <div className="logo-container">
-            <img src={SunriseLogo} alt="Sunrisehomes logo" className="logo" />
-          </div>
-          <nav>{/* <Menu /> */}</nav>
-        </header>
-        <div> Siden er under konstruksjon.</div>
-
-        {/* <Routes>
+        <PropertyProvider>
+          <header>
+            <div className="logo-container">
+              <img src={SunriseLogo} alt="Sunrisehomes logo" className="logo" />
+            </div>
+            <nav>
+              <Menu />
+            </nav>
+          </header>
+          {/* <div> Siden er under konstruksjon.</div> */}
+          <Routes>
             <Route path="/" element={<Hjem />} />
             <Route path="/om" element={<Om />} />
             <Route path="/objekter" element={<Områder />} />
-            <Route path="/kontakt" element={<Kontakt />} />
+            {/* <Route path="/kontakt" element={<Kontakt />} /> */}
             <Route path="/property/:id" element={<PropertyDetails />} />
           </Routes>
-
-          <footer>
+          {/* <footer>
             <div className="footer-element-content">
               Sunrise Homes <br />
               Haugerudbråtan 17
@@ -59,8 +56,8 @@ const App = () => {
                 </NavLink>
               ))}
             </div>
-          </footer>
-        </PropertyProvider> */}
+          </footer> */}
+        </PropertyProvider>
       </main>
     </BrowserRouter>
   );
