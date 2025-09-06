@@ -27,9 +27,6 @@ export const Om = () => {
           <NavLink href="/objekter" className="link-button">
             Se boligobjekter
           </NavLink>
-          <NavLink href="/kontakt" className="link-button">
-            Kontakt oss
-          </NavLink>
         </div>
         <div className="contact">
           <h2>Vi vil gjerne høre fra deg</h2>
