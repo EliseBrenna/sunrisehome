@@ -49,6 +49,7 @@ export const PropertyDetails = () => {
           <p>
             {property.town}, {property.province}
           </p>
+          <p className="property-id">#{property.id}</p>
         </h1>
         <h2>{formatPrice(property.price)}</h2>
       </div>

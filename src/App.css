@@ -112,6 +112,12 @@ header {
   }
 }
 
+.property-id {
+  font-weight: 700 !important;
+  font-size: 20px !important;
+  color: rgb(108, 108, 108);
+}
+
 .select-container {
   display: flex;
   align-items: end;
